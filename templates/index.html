@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>OAUTH WILKIECH</title>
+    <meta name="author" content="Christopher Wilkie">
+    <meta name="description" content="OAuth ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+    <div id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand">Fridgeanator</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="https://hw10-wilkiech.uc.r.appspot.com/">Home</a>
+              {% if token %}
+                  <a class="nav-item nav-link" href="https://hw10-wilkiech.uc.r.appspot.com/logout">Log Out</a>
+              {% else %}
+                  <a class="nav-item nav-link" href="https://hw10-wilkiech.uc.r.appspot.com/login">Log In</a>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+    </div>
+
+    <br>
+
+    <div id="content">
+        {% if token %}
+            <h1>Welcome!</h1>
+            <ul>
+                <li>USER: {{ user }}</li>
+                <li>SUB: {{ sub }}</li>
+                <li>JWT: {{ token }}</li>
+            </ul>
+        {% else %}
+            <h1>Please authenticate by logging in!</h1>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
